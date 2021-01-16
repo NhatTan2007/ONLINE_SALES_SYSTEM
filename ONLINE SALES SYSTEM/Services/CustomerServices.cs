@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ONLINE_SALES_SYSTEM.Services
 {
-    class GuestServices
+    class CustomerServices
     {
     }
 }

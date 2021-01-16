@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ONLINE_SALES_SYSTEM.Ultilities;
 
 namespace ONLINE_SALES_SYSTEM.Models
 {
     class Order
     {
+        private static int _count = 0;
         public int Id { get; set; }
-        public DateTime OrderTime { get; set; }
+        public DateTime? OrderTime { get; set; }
         public List<ProductOrder> OrderDetail { get; set;}
-        public bool StatusPayment { get; set; }
+        public OrderStatus StatusPayment { get; set; }
         public decimal TotalPrice => CalTotalPrice();
         
         private decimal CalTotalPrice()
@@ -24,6 +26,8 @@ namespace ONLINE_SALES_SYSTEM.Models
         public Order()
         {
 
+            OrderDetail = new List<ProductOrder>();
+            OrderTime = null;
         }
 
         

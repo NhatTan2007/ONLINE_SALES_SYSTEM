@@ -4,13 +4,9 @@ using System.Text;
 
 namespace ONLINE_SALES_SYSTEM.Ultilities
 {
-    class common
+    public enum OrderStatus
     {
-        public enum OderStatus
-        {
-            Empty = 1,
-            Available =2,
-
-        }
+        Paid = 1,
+        CashOnDelivery = 2,
     }
 }
