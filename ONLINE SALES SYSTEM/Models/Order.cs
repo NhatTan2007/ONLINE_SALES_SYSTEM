@@ -7,16 +7,15 @@ namespace ONLINE_SALES_SYSTEM.Models
     class Order
     {
         public int Id { get; set; }
-        public DateTime StarTime { get; set; }
-        public DateTime? EndTime { get; set; }
-        public List<ProductWantOrder> productWantOrdersList { get; set;}
-        public bool Status { get; set; }
+        public DateTime OrderTime { get; set; }
+        public List<ProductOrder> OrderDetail { get; set;}
+        public bool StatusPayment { get; set; }
         public decimal TotalPrice => CalTotalPrice();
         
         private decimal CalTotalPrice()
         {
             decimal sum = 0;
-            foreach (ProductWantOrder item in productWantOrdersList)
+            foreach (ProductOrder item in OrderDetail)
             {
                 sum += item._amout;
             }
