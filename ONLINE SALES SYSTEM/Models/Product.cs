@@ -26,5 +26,9 @@ namespace ONLINE_SALES_SYSTEM.Models
             _name = name;
             _price = price;
         }
+        public override string ToString()
+        {
+            return $"id: {_id}\t\t name:{_name}\t\t price{_price}";
+        }
     }
 }
