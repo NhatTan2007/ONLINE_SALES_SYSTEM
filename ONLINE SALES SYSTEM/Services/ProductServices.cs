@@ -32,5 +32,10 @@ namespace ONLINE_SALES_SYSTEM.Services
                 Console.WriteLine(pd.ToString());
             }
         }
+
+        public int GetNumberOfProducts()
+        {
+            return _menuProduct.ListProduct.Count;
+        }
     }
 }

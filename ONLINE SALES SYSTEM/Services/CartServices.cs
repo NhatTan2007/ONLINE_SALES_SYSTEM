@@ -45,5 +45,6 @@ namespace ONLINE_SALES_SYSTEM.Services
                 Console.WriteLine($"{i + 1}. {_customerCart.ListProductOfCustomer[i].ToString()}");
             }
         }
+
     }
 }

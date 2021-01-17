@@ -24,6 +24,11 @@ namespace ONLINE_SALES_SYSTEM.Ultilities
                 sw.Write(JsonConvert.SerializeObject(data));
             }
         }
+
+        public static string ReadDataFromConsole()
+        {
+            return Console.ReadLine().Trim();
+        }
     }
 
     public enum OrderStatus

@@ -10,7 +10,6 @@ namespace ONLINE_SALES_SYSTEM.Services
         private Shop _shop;
         private MenuProducts _shopMenuProducts;
         private ProductServices _productServicesOfShop;
-        public MenuProducts ShopMenuProduct { get => _shopMenuProducts; set => _shopMenuProducts = value; }
 
         public ShopServices(ref Shop inputShop)
         {
@@ -22,6 +21,16 @@ namespace ONLINE_SALES_SYSTEM.Services
         public void ShowProducts()
         {
             _productServicesOfShop.ShowProducts();
+        }
+
+        public int GetNumberOfProducts()
+        {
+            return _productServicesOfShop.GetNumberOfProducts();
+        }
+
+        public Product GetProduct(int productId) 
+        {
+            return _productServicesOfShop.GetProduct(productId);
         }
     }
 }
