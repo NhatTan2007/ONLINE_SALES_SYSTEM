@@ -16,6 +16,10 @@ namespace ONLINE_SALES_SYSTEM.Models
         public string Name { get => _name; set => _name = value; }
         public decimal Price { get => _price; set => _price = value; }
         public int QuantityInStock { get => _quantityInStock; set => _quantityInStock = value; }
+        public Product()
+        {
+
+        }
 
         public Product(string name, decimal price, int quantity)
         {
@@ -25,13 +29,11 @@ namespace ONLINE_SALES_SYSTEM.Models
             _quantityInStock = quantity;
         }
 
-        public Product()
-        {
-        }
-
         public override string ToString()
         {
-            return $"Id: {_id}\tName: {_name}\t\tPrice: {_price}\t\tQuantity in Stock: {_quantityInStock}";
+            return $"Id: {_id}\tName: {_name}\n\n" +
+                $"Price: {_price}\t\tQuantity in Stock: {_quantityInStock}\n" +
+                $"--------------------------------------------------------";
         }
     }
 }

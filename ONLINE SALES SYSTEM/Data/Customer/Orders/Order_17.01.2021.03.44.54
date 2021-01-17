@@ -1,0 +1,13 @@
+﻿{
+  "OrderTime": "17/01/2021 3:44 PM",
+  "OrderDetail": [
+    {
+      "Amount": 8590000.0,
+      "ProductName": "Apple Watch SE",
+      "ProductPrice": 8590000.0,
+      "Quantity": 1
+    }
+  ],
+  "StatusPayment": "Cash On Delivery",
+  "TotalPrice": 8590000.0
+}

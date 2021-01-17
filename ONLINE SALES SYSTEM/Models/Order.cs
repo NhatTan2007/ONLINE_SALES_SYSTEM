@@ -7,18 +7,32 @@ namespace ONLINE_SALES_SYSTEM.Models
 {
     class Order
     {
-        private static int _count = 0;
-        public int Id { get; set; }
         public string OrderTime { get; set; }
         public List<ProductOrder> OrderDetail { get; set;}
-        public OrderStatus StatusPayment { get; set; }
-        public decimal TotalPrice { get; set; }
+        public string StatusPayment { get; set; }
+        public decimal TotalPrice => CalTotalPrice();
 
+        public Order()
+        {
+
+        }
         public Order(Cart inputCart)
         {
-            Id = ++_count;
             OrderDetail = new List<ProductOrder>(inputCart.ListProductOfCustomer);
             OrderTime = DateTime.UtcNow.ToString("g");
+        }
+
+        private decimal CalTotalPrice()
+        {
+            decimal sum = 0;
+            if (OrderDetail.Count > 0)
+            {
+                foreach (ProductOrder item in OrderDetail)
+                {
+                    sum += item.Amount;
+                }
+            }
+            return sum;
         }
     }
 }

@@ -15,58 +15,67 @@ namespace ONLINE_SALES_SYSTEM
             Customer newCustomer = new Customer();
             Shop newShop = new Shop();
             RootServices system = new RootServices(ref newShop, ref newCustomer);
-            string strFullPath = String.Empty;
+            //Read Cart data of customer if customer not create order yet
+            newCustomer.MyCart = system.ReadCartJson();
+            //Read Customer Order Hisotry
+            newCustomer.ListOrder = system.ReadCustomerOrderHistoryCustomerJson();
+            //Read Product list of shop
+            newShop.ProductsOfShop = system.ReadProductListJson();
+
             while (true)
             {
-            back_To_Menu:
-                //Menu
+                MenuServices.ShowMainMenu();
             back_To_Choice:
                 Console.Write("Please choose one option above: ");
                 checkInput = int.TryParse(Common.ReadDataFromConsole(), out customerChoice);
-                while (!checkInput || customerChoice < 0 || customerChoice > 6) //Chua them max option
+                while (!checkInput || customerChoice < 0 || customerChoice > 6)
                 {
                     Console.WriteLine("Your input wrong requirement, please input again");
                     goto back_To_Choice;
                 }
+                Console.WriteLine();
                 switch (customerChoice)
                 {
+                    //Show all products of Shop
                     case 1:
                         system.ShowProductOfShop();
                         break;
+                    //Customer add product to cart
                     case 2:
                         system.CustomerAddProductToCart();
-                        strFullPath = Path.Combine(FilePath.strRootDataPath, FilePath.strCustomerPath, FilePath.strCartFileName);
-                        Common.WriteFileJson(newCustomer.MyCart, strFullPath);
+                        system.WriteCartJson();
                         break;
+                    //Show customer cart detail
                     case 3:
                         system.ShowCustomerCartDetail();
                         break;
+                    //Decrease quantity Product Order in customer Cart
                     case 4:
                         system.DecreaseQuantityProductOrderInCart();
+                        system.WriteCartJson();
                         break;
+                    //Select and remove Product Order from Cart
                     case 5:
-                        int ordinalNumber;
-                        system.ShowCustomerCartDetail();
-                        Console.WriteLine("Input 0 to cancel");
-                    back_input_ordinal_numbers:
-                        Console.Write("Select one product in your cart above, please input ordinal numbers:");
-                        checkInput = int.TryParse(Common.ReadDataFromConsole(), out ordinalNumber);
-                        while (!checkInput || ordinalNumber < 0 || ordinalNumber > newCustomer.MyCart.ListProductOfCustomer.Count)
-                        {
-                            Console.WriteLine("Please check your input and try again");
-                            goto back_input_ordinal_numbers;
-                        }
-                        if (ordinalNumber == 0) goto back_To_Menu;
-                        ProductOrder productOrder = newCustomer.MyCart.ListProductOfCustomer[ordinalNumber - 1];
+                        ProductOrder? productOrder = system.SelectProductOrderFromCart();
                         system.RemoveProductFromCart(productOrder);
+                        system.WriteCartJson();
                         break;
                     case 6:
-                        system.CustomerCreateOrder();
+                        //Customer create Order
+                        if (newCustomer.MyCart.ListProductOfCustomer.Count > 0)
+                        {
+                            system.CustomerCreateOrder();
+                            system.WriteCartJson();
+                            system.WriteProductList();
+                            system.WriteCustomerOrderHistoryCustomerJson();
+                        }
+                        else Console.WriteLine("Your cart is empty\n");
                         break;
                     case 0:
                         Environment.Exit(0);
                         break;
                 }
+                Console.WriteLine();
             }
         }
     }

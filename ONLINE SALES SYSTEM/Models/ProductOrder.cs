@@ -15,15 +15,21 @@ namespace ONLINE_SALES_SYSTEM.Models
         public decimal ProductPrice { get => _productPrice; set => _productPrice = value; }
         public int Quantity { get => _quantity; set => _quantity = value; }
 
-        public ProductOrder(Product inputProduct, int quatity)
+        public ProductOrder()
+        {
+
+        }
+        public ProductOrder(Product inputProduct, int quantity)
         {
             _productName = inputProduct.Name;
             _productPrice = inputProduct.Price;
+            _quantity = quantity;
         }
 
         public override string ToString()
         {
-            return $"Name: {_productName}\t\tPrice: {_productPrice}\tQuantity: {_quantity}\tAmount: {Amount}";
+            return $"Name: {_productName}\n" +
+                $"Price: {_productPrice}\t\tQuantity: {_quantity}\tAmount: {Amount}";
         }
     }
 }

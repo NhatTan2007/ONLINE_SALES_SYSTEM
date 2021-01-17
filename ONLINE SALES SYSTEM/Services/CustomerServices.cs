@@ -2,12 +2,14 @@
 using ONLINE_SALES_SYSTEM.Ultilities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace ONLINE_SALES_SYSTEM.Services
 {
     class CustomerServices
     {
+        private string strFullPath = Path.Combine(FilePath.strRootDataPath, FilePath.strCustomerPath, FilePath.strCustomerOrderHistoryFileName);
         private Customer _thisCustomer;
         private CartServices _cartServices;
         private OrderServices _orderServices;
@@ -48,6 +50,34 @@ namespace ONLINE_SALES_SYSTEM.Services
             _cartServices.ShowCart();
         }
 
+        public ProductOrder SelectProductOrderFromCart()
+        {
+            return _cartServices.SelectProductOrderFromCart();
+        }
+        public void WriteCartJson()
+        {
+            _cartServices.WriteCartJson();
+        }
 
+        public Cart ReadCartJson()
+        {
+            return _cartServices.ReadCartJson();
+        }
+
+        public void WriteCustomerOrderHistoryCustomerJson()
+        {
+            Common.WriteFileJson(_thisCustomer.ListOrder, strFullPath);
+        }
+
+        public List<Order> ReadCustomerOrderHistoryCustomerJson()
+        {
+            
+            if (File.Exists(strFullPath))
+            {
+                List<Order>? temp = Common.ReadFileJson<List<Order>>(strFullPath);
+                if (temp != null) return temp;
+            }
+            return new List<Order>();
+        }
     }
 }

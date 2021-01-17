@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using ONLINE_SALES_SYSTEM.Ultilities;
+using System.IO;
 
 namespace ONLINE_SALES_SYSTEM.Services
 {
@@ -20,6 +21,8 @@ namespace ONLINE_SALES_SYSTEM.Services
             Order newOrder = new Order(_myCustomer.MyCart);
             SetPaidStatus(newOrder);
             _myCustomer.ListOrder.Add(newOrder);
+            _myCustomer.MyCart.ListProductOfCustomer.Clear();
+            WriteOrderJson(newOrder);
             return newOrder;
         }
 
@@ -29,16 +32,22 @@ namespace ONLINE_SALES_SYSTEM.Services
             bool checkInput = false;
             MenuServices.ShowMenuModePayment();
             back_your_Choice:
-            Console.WriteLine("Your choice: ");
+            Console.Write("Your choice: ");
             checkInput = int.TryParse(Console.ReadLine().Trim(), out yourChoice);
-            while (!checkInput || yourChoice < 0 || yourChoice > 2)
+            while (!checkInput || yourChoice <= 0 || yourChoice > 2)
             {
                 Console.WriteLine("Your input is wrong, please check again");
                 goto back_your_Choice;
             }
-            if (yourChoice == 0) return;
-            if (yourChoice == 1) newOrder.StatusPayment = OrderStatus.Paid;
-            if (yourChoice == 2) newOrder.StatusPayment = OrderStatus.CashOnDelivery;
+            if (yourChoice == 1) newOrder.StatusPayment = "Paid";
+            if (yourChoice == 2) newOrder.StatusPayment = "Cash On Delivery";
+        }
+
+        private void WriteOrderJson(Order inputOrder)
+        {
+            FilePath.strOrderFileName = $"Order_{DateTime.UtcNow.ToString("dd.MM.yyyy.hh.mm.ss")}";
+            string strFullPath = Path.Combine(FilePath.strRootDataPath, FilePath.strCustomerPath, FilePath.strOrderPath, FilePath.strOrderFileName);
+            Common.WriteFileJson(inputOrder, strFullPath);
         }
     }
 }
