@@ -9,7 +9,7 @@ namespace ONLINE_SALES_SYSTEM.Models
         private string _productName;
         private decimal _productPrice;
         private int _quantity;
-        public decimal _amout => _quantity * _productPrice;
+        public decimal Amount => _quantity * _productPrice;
 
         public string ProductName { get => _productName; set => _productName = value; }
         public decimal ProductPrice { get => _productPrice; set => _productPrice = value; }
@@ -19,6 +19,11 @@ namespace ONLINE_SALES_SYSTEM.Models
         {
             _productName = inputProduct.Name;
             _productPrice = inputProduct.Price;
+        }
+
+        public override string ToString()
+        {
+            return $"Name: {_productName}\t\tPrice: {_productPrice}\tQuantity: {_quantity}\tAmount: {Amount}";
         }
     }
 }

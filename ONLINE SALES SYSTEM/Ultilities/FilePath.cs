@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ONLINE_SALES_SYSTEM.Services
+namespace ONLINE_SALES_SYSTEM.Ultilities
 {
-    class GuestServices
+    class FilePath
     {
     }
 }

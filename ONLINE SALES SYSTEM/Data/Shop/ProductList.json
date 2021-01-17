@@ -1,0 +1,104 @@
+{
+  "ProductsOfShop": {
+    "ListProduct": [
+      {
+        "Id": 1,
+        "Name": "iPad Pro 2020",
+        "Price": 26490000,
+        "QuantityInStock": 5
+      },
+      {
+        "Id": 2,
+        "Name": "iPad Gen 8",
+        "Price": 11700000,
+        "QuantityInStock": 3
+      },
+      {
+        "Id": 3,
+        "Name": "Apple AirPods Pro",
+        "Price": 23000,
+        "QuantityInStock": 7
+      },
+      {
+        "Id": 4,
+        "Name": "Apple Adapter Type-C 61W",
+        "Price": 1699000,
+        "QuantityInStock": 3
+      },
+      {
+        "Id": 5,
+        "Name": "iPhone SE 2020 VN/A - Genuine Product",
+        "Price": 1699000,
+        "QuantityInStock": 3
+      },
+      {
+        "Id": 6,
+        "Name": "Apple Earpods with lightning connector",
+        "Price": 1699000,
+        "QuantityInStock": 3
+      },
+      {
+        "Id": 7,
+        "Name": "iPad Pro 2020 11-inch WiFi ",
+        "Price": 1699000,
+        "QuantityInStock": 3
+      },
+      {
+        "Id": 8,
+        "Name": "Apple Cable Converter Type-C to 3.5mm",
+        "Price": 1699000,
+        "QuantityInStock": 3
+      },
+      {
+        "Id": 9,
+        "Name": "iPhone 8 Plus",
+        "Price": 1699000,
+        "QuantityInStock": 3
+      },
+      {
+        "Id": 9,
+        "Name": "iPhone Xr",
+        "Price": 11990000,
+        "QuantityInStock": 8
+      },
+      {
+        "Id": 10,
+        "Name": "Phone 12 Mini",
+        "Price": 18990000,
+        "QuantityInStock": 6
+      },
+      {
+        "Id": 11,
+        "Name": "iPad Air 4",
+        "Price": 15990000,
+        "QuantityInStock": 3
+      },
+      {
+        "Id": 12,
+        "Name": "iPhone SE",
+        "Price": 11990000,
+        "QuantityInStock": 2
+      },
+      {
+        "Id": 13,
+        "Name": "iPad Gen 7",
+        "Price": 1699000,
+        "QuantityInStock": 6
+      },
+      {
+        "Id": 14,
+        "Name": "Apple Watch SE",
+        "Price": 8590000,
+        "QuantityInStock": 7
+      },
+      {
+        "Id": 15,
+        "Name": "Apple AirPods 2",
+        "Price": 3390000,
+        "QuantityInStock": 10
+      }
+
+
+    ]
+  }
+}
