@@ -1,0 +1,28 @@
+﻿[
+  {
+    "OrderTime": "17/01/2021 3:44 PM",
+    "OrderDetail": [
+      {
+        "Amount": 8590000.0,
+        "ProductName": "Apple Watch SE",
+        "ProductPrice": 8590000.0,
+        "Quantity": 1
+      }
+    ],
+    "StatusPayment": "Cash On Delivery",
+    "TotalPrice": 8590000.0
+  },
+  {
+    "OrderTime": "17/01/2021 3:46 PM",
+    "OrderDetail": [
+      {
+        "Amount": 37980000.0,
+        "ProductName": "Phone 12 Mini",
+        "ProductPrice": 18990000.0,
+        "Quantity": 2
+      }
+    ],
+    "StatusPayment": "Paid",
+    "TotalPrice": 37980000.0
+  }
+]

@@ -13,7 +13,8 @@ namespace ONLINE_SALES_SYSTEM.Ultilities
             using (StreamReader sr = new StreamReader(fullPath, Encoding.UTF8))
             {
                 string data = sr.ReadToEnd();
-                return JsonConvert.DeserializeObject<T>(data);
+                T ba = JsonConvert.DeserializeObject<T>(data);
+                return ba;
             }
 
         }
@@ -21,7 +22,7 @@ namespace ONLINE_SALES_SYSTEM.Ultilities
         {
             using (StreamWriter sw = new StreamWriter(fullPath, append, Encoding.UTF8))
             {
-                sw.Write(JsonConvert.SerializeObject(data));
+                sw.Write(JsonConvert.SerializeObject(data, Formatting.Indented));
             }
         }
 
@@ -31,9 +32,4 @@ namespace ONLINE_SALES_SYSTEM.Ultilities
         }
     }
 
-    public enum OrderStatus
-    {
-        Paid = 1,
-        CashOnDelivery = 2,
-    }
 }

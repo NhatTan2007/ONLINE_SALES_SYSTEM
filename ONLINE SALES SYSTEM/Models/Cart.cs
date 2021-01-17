@@ -9,13 +9,21 @@ namespace ONLINE_SALES_SYSTEM.Models
         private List<ProductOrder> _listProductOfCustomer;
         public List<ProductOrder> ListProductOfCustomer { get => _listProductOfCustomer; set => _listProductOfCustomer = value; }
         public decimal TotalPrice => CalTotalPrice();
+
+        public Cart()
+        {
+            _listProductOfCustomer = new List<ProductOrder>();
+        }
         
         private decimal CalTotalPrice()
         {
             decimal sum = 0;
-            foreach (ProductOrder item in _listProductOfCustomer)
+            if (_listProductOfCustomer != null)
             {
-                sum += item.Amount;
+                foreach (ProductOrder item in _listProductOfCustomer)
+                {
+                    sum += item.Amount;
+                }
             }
             return sum;
         }

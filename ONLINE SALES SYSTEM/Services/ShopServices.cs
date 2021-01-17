@@ -8,14 +8,12 @@ namespace ONLINE_SALES_SYSTEM.Services
     class ShopServices
     {
         private Shop _shop;
-        private MenuProducts _shopMenuProducts;
         private ProductServices _productServicesOfShop;
 
         public ShopServices(ref Shop inputShop)
         {
             _shop = inputShop;
-            _shopMenuProducts = _shop.ProductsOfShop;
-            _productServicesOfShop = new ProductServices(ref _shopMenuProducts);
+            _productServicesOfShop = new ProductServices(ref _shop);
         }
 
         public void ShowProducts()
@@ -31,6 +29,16 @@ namespace ONLINE_SALES_SYSTEM.Services
         public Product GetProduct(int productId) 
         {
             return _productServicesOfShop.GetProduct(productId);
+        }
+
+        public MenuProducts ReadProductListJson()
+        {
+            return _productServicesOfShop.ReadProductListJson();
+        }
+
+        public void WriteProductListJson()
+        {
+            _productServicesOfShop.WriteProductListJson();
         }
     }
 }
