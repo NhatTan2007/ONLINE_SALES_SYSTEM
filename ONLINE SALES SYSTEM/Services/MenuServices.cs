@@ -7,14 +7,15 @@ namespace ONLINE_SALES_SYSTEM.Services
 {
     class MenuServices
     {
-        public MenuProduct menuProduct { get; set; }
+        public static MenuProduct menuProduct { get; set; }
 
         public MenuServices()
         {
 
         }
 
-        public void ShowProducts()
+        public static void ShowProducts()
+
         {
             foreach (Product pd in menuProduct.ListProduct)
             {

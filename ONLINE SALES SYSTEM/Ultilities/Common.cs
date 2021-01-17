@@ -23,7 +23,7 @@ namespace ONLINE_SALES_SYSTEM.Ultilities
             }
 
         }
-        public static void WriteFileJson<T>(string data, string fullPath)
+        public static void WriteFileJson(object data, string fullPath)
         {
             using (StreamWriter sw = new StreamWriter(fullPath,append: false, Encoding.UTF8))
             {

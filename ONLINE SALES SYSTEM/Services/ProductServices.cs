@@ -18,7 +18,8 @@ namespace ONLINE_SALES_SYSTEM.Services
                     return pd;
                 }
             }
-            return new Product();
+            return null;
         }
+
     }
 }
