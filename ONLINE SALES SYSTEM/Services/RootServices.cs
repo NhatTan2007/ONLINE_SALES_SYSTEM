@@ -62,6 +62,53 @@ namespace ONLINE_SALES_SYSTEM.Services
                 Console.WriteLine("Cannot find product, please check again your input ID");
             }
         }
+
+        public void DecreaseQuantityProductOrderInCart()
+        {
+            ShowCustomerCartDetail();
+            int customerChoice;
+            bool checkInput = false;
+            int quantityDecrease;
+            Console.WriteLine("Input 0 to cancel");
+        back_input_ordinal_numbers:
+            Console.Write("Select one product in your cart above, please input ordinal numbers:");
+            checkInput = int.TryParse(Common.ReadDataFromConsole(), out customerChoice);
+            while (!checkInput || customerChoice < 0 || customerChoice > _customer.MyCart.ListProductOfCustomer.Count)
+            {
+                Console.WriteLine("Please check your input and try again");
+                goto back_input_ordinal_numbers;
+            }
+            if (customerChoice == 0) return;
+            ProductOrder productOrder = _customer.MyCart.ListProductOfCustomer[customerChoice - 1];
+        back_input_quanity_decrease:
+            Console.Write($"Input quantity of product you want to decrease, its quanity now is {productOrder.Quantity}");
+            checkInput = int.TryParse(Common.ReadDataFromConsole(), out quantityDecrease);
+            while (!checkInput || quantityDecrease < 0 || quantityDecrease > productOrder.Quantity)
+            {
+                Console.WriteLine("Your input is wrong, please check again");
+                goto back_input_quanity_decrease;
+            }
+            if (quantityDecrease == productOrder.Quantity)
+            {
+                RemoveProductFromCart(productOrder);
+                return;
+            }
+            productOrder.Quantity -= quantityDecrease;
+        }
+
+        public void RemoveProductFromCart(ProductOrder inputProduct)
+        {
+        back_answear:
+            Console.WriteLine("Do you want to remove this product from your cart? (Y/N)");
+            string answear = Common.ReadDataFromConsole();
+            while (answear != "Y" && answear != "N")
+            {
+                Console.WriteLine("Please just input Y or N");
+                goto back_answear;
+            }
+            if (answear == "N") return;
+            _customerServices.RemoveProductFromCart(inputProduct);
+        }
         public void ShowProductOfShop()
         {
             _shopServices.ShowProducts();
@@ -69,8 +116,13 @@ namespace ONLINE_SALES_SYSTEM.Services
 
         public void ShowCustomerCartDetail()
         {
-            Console.WriteLine("Cart of Customer\n");
+            Console.WriteLine("Your cart\n");
             _customerServices.ShowCart();
+        }
+
+        public Order CustomerCreateOrder()
+        {
+            return _customerServices.CreateOrder();
         }
     }
 }
