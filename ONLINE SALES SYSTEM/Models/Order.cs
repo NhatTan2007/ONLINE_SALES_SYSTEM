@@ -9,28 +9,16 @@ namespace ONLINE_SALES_SYSTEM.Models
     {
         private static int _count = 0;
         public int Id { get; set; }
-        public DateTime? OrderTime { get; set; }
+        public string OrderTime { get; set; }
         public List<ProductOrder> OrderDetail { get; set;}
         public OrderStatus StatusPayment { get; set; }
-        public decimal TotalPrice => CalTotalPrice();
-        
-        private decimal CalTotalPrice()
+        public decimal TotalPrice { get; set; }
+
+        public Order(Cart inputCart)
         {
-            decimal sum = 0;
-            foreach (ProductOrder item in OrderDetail)
-            {
-                sum += item._amout;
-            }
-            return sum;
+            Id = ++_count;
+            OrderDetail = new List<ProductOrder>(inputCart.ListProductOfCustomer);
+            OrderTime = DateTime.UtcNow.ToString("g");
         }
-        public Order()
-        {
-
-            OrderDetail = new List<ProductOrder>();
-            OrderTime = null;
-        }
-
-        
-
     }
 }

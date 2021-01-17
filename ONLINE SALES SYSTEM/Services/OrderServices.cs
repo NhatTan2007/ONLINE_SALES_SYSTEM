@@ -17,9 +17,7 @@ namespace ONLINE_SALES_SYSTEM.Services
 
         public Order CreateOrder()
         {
-            Order newOrder = new Order();
-            newOrder.OrderDetail = new List<ProductOrder>(_myCustomer.MyCart.ListProductOfGuest);
-            newOrder.OrderTime = DateTime.UtcNow;
+            Order newOrder = new Order(_myCustomer.MyCart);
             SetPaidStatus(newOrder);
             _myCustomer.ListOrder.Add(newOrder);
             return newOrder;

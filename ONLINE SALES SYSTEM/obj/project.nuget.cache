@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "d+M5NDSy7WyvhA46Q84kBH59sTlr5WDuXXZYqfaaTyQM03jD31d6IbF9NkzLBvdmXJM4aCxnU3DsuATwXkQFrA==",
+  "dgSpecHash": "lLtnrcRZd5HoO9OUv4f2kj8X6qAy0bv5/1WY7KhuLvbU8bpLJN90Z87SFgm2duu0FevPMoNg+jeL5aOEAWcxfg==",
   "success": true,
   "projectFilePath": "D:\\LEARNING\\MODULE 2\\CASE STUDY\\ONLINE SALES SYSTEM\\ONLINE SALES SYSTEM\\ONLINE SALES SYSTEM.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\nhatt\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
